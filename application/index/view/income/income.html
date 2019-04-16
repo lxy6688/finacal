@@ -1,0 +1,118 @@
+{include file="common/header" title="小阳理财" /}
+{include file="common/left" /}
+<!-- BEGIN PAGE TITLE & BREADCRUMB-->
+<h3 class="page-title">
+	可用资产 <small>收入明细</small>
+</h3>
+
+<ul class="breadcrumb">
+
+	<li>
+
+	<i class="icon-home"></i>
+
+	<a href="index.html">首页</a> 
+
+	<i class="icon-angle-right"></i>
+
+	</li>
+
+	<li>
+
+	<a href="#">收入明细</a>
+
+	<i class="icon-angle-right"></i>
+
+	</li>
+
+	<li><a href="#">总体明细</a></li>
+
+</ul>
+
+<!-- END PAGE TITLE & BREADCRUMB-->
+
+</div>
+
+</div>
+
+<!-- END PAGE HEADER-->
+
+<!-- BEGIN PAGE CONTENT-->
+
+<div class="row-fluid">
+
+	<div class="span12">
+
+<!-- BEGIN EXAMPLE TABLE PORTLET-->
+
+		<div class="portlet box green">
+
+			<div class="portlet-title">
+
+				<div class="caption"><i class="icon-globe"></i>Responsive Table With Expandable details</div>
+
+				<div class="tools">
+
+					<a href="javascript:;" class="reload"></a>
+
+					<a href="javascript:;" class="remove"></a>
+
+				</div>
+
+			</div>
+
+			<div class="portlet-body">
+				<a class=" btn green" data-toggle="modal" href="#stack1">新建+</a>
+				<div id="stack1" class="modal hide fade" tabindex="-1" data-focus-on="input:first">
+					
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+						<h3>添加收入</h3>
+					</div>
+
+					<div class="modal-body">
+						<form>
+						<ul>
+							<li>类别<input type="text" id="tid"   class="m-wrap" data-tabindex="1"></li>
+							<li>金额<input type="text" id="count" class="m-wrap" data-tabindex="2"></li>
+						</ul>
+						</form>
+					</div>
+
+					<div class="modal-footer">
+						<button type="button" data-dismiss="modal" class="btn">关闭</button>
+						<button type="button" id="btnSave"  class="btn green">确定</button>
+					</div>
+				</div>
+
+
+				<table class="table table-striped table-bordered table-hover table-full-width" id="sample_1">
+					<thead>
+					<tr>
+						<th>类别名称</th>
+						<th>卡号(账号)</th>
+						<th>资金</th>
+						<th>收入时间</th>
+						<th>创建时间</th>
+					</tr>		
+					</thead>
+					
+							
+				</table>
+
+			</div>
+
+		</div>
+
+<!-- END PAGE CONTENT-->
+
+</div>
+
+<!-- END PAGE CONTAINER-->
+
+</div>
+
+<!-- BEGIN FOOTER -->
+<script src="/static/js/appjs/income.js"></script>
+<!-- END CONTAINER -->
+{include file="common/footer" /}

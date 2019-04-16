@@ -1,0 +1,79 @@
+<?php
+namespace app\index\controller;
+use app\index\model\User;
+use app\index\model\Asset;
+use think\Cache;
+
+/**
+ * 首页控制器controllers方法
+ * @author xiaoyang
+ */
+class Index extends Base
+{
+    /**
+     * 初始化
+     */
+    public function __construct(){
+        parent::__construct();
+        $this->asset = new Asset;
+        $this->user = new User;
+    }
+    
+
+    /**
+     * 网站首页
+     */
+    public function index()
+    {
+	echo '网站首页';
+	
+	exit;
+        $url = $_SERVER['REQUEST_URI'];
+
+        echo $url;
+        echo "\r\n";
+
+	 
+
+        $url = $_SERVER['PATH_INFO'];
+        echo $url;
+        exit;
+
+        //return '<style type="text/css">*{ padding: 0; margin: 0; } .think_default_text{ padding: 4px 48px;} a{color:#2E5CD5;cursor: pointer;text-decoration: none} a:hover{text-decoration:underline; } body{ background: #fff; font-family: "Century Gothic","Microsoft yahei"; color: #333;font-size:18px} h1{ font-size: 100px; font-weight: normal; margin-bottom: 12px; } p{ line-height: 1.6em; font-size: 42px }</style><div style="padding: 24px 48px;"> <h1>:)</h1><p> ThinkPHP V5<br/><span style="font-size:30px">十年磨一剑 - 为API开发设计的高性能框架</span></p><span style="font-size:22px;">[ V5.0 版本由 <a href="http://www.qiniu.com" target="qiniu">七牛云</a> 独家赞助发布 ]</span></div><script type="text/javascript" src="https://tajs.qq.com/stats?sId=9347272" charset="UTF-8"></script><script type="text/javascript" src="https://e.topthink.com/Public/static/client.js"></script><think id="ad_bd568ce7058a1091"></think>';
+        return $this->fetch('index');
+    }
+
+    /**
+     * 网站首页，获取总资产、可用资产等数据
+     */
+    public function getAsset(){
+        //初始化返回条件
+        $resp = array(
+            'status' => ['code'=>'0','msg'=>''],
+            'data'=>[]
+        );
+        $result = $this->asset->getAsset($this->uid);
+        if(count($result)>0){ 
+            $resp['data'] = $result;
+            $resp['status']['code'] = '200';
+        }
+        return json($resp);
+    }
+
+    /**
+     * 测试redis
+     */
+    public function cacheTest(){
+        $url = $_SERVER['REQUEST_URI'];
+        echo $url;exit;
+
+        $redis = Cache::getHandler(); //tp5封装的redis对象,返回的是tp自己写的redis类的对象
+        $redis->set('name','jack');   //这是tp5封装redis,可以自由的扩展，所以只能调用类中的方法
+
+        //如果用原生的redis,则如下
+        $res = $redis->handler()->lpush('namelist','jack list');  //$redis->handler() 这是实例化对象调用类中的属性，这个属性就是redis的原生对象
+        echo $res;
+        //print_r($redis);
+
+    }
+}
